@@ -1,0 +1,8 @@
+{
+  "hello": "Привет Друг!",
+  "testKey": "{itemsCount3, множественное число, = 0 {Es hat <0> keinen </0> Gegenstand. \n} один {Es hat <1>",
+  "sighUpForm": {
+    "password": "1234",
+    "button": "Войти"
+  }
+}
