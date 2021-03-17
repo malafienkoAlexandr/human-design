@@ -1,27 +1,44 @@
 import React from "react";
+import { Platform, StatusBar, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons } from "@expo/vector-icons";
 import { HomeScreen } from "../screens/home/HomeScreen";
 import { THEME } from "../theme";
 
 const Stack = createStackNavigator();
 
 const navigatorOptions = {
-  defaultNavigationOptions: {
+  default: {
     headerStyle: {
       backgroundColor: THEME.BLACK_COLOR_APP,
     },
     headerTintColor: "#fff",
   },
+  hide: {
+    headerShown: false,
+  },
 };
 
 const MainNavigator = () => {
-  <Stack.Navigator>
-    <Stack.Screen name="Главная" component={HomeScreen} />
-  </Stack.Navigator>;
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Главная"
+        component={HomeScreen}
+        options={navigatorOptions.hide}
+      />
+    </Stack.Navigator>
+  );
 };
 
 export const AppNavigator = () => {
-  return <NavigationContainer>MainNavigator</NavigationContainer>;
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar barStyle="light-content" />
+        <MainNavigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
 };
