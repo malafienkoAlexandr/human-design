@@ -16,7 +16,6 @@ export const HomeScreen = ({}) => {
     >
       <SafeAreaView>
         <HomeHeader />
-        <Text>{t("hello")}</Text>
       </SafeAreaView>
     </View>
   );

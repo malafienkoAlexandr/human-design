@@ -1,42 +1,66 @@
-// import React from "react";
-// import View from "react-native";
-
-// export const HomeHeader = () => {
-
-// };
-
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { User } from "UserModule";
 import Svg, { Ellipse } from "react-native-svg";
-// import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { THEME } from "../../theme";
-// import MaterialButtonLight from "./components/MaterialButtonLight";
+import { useTranslation } from "react-i18next";
+import { BodygraphButton } from "../buttons/BodygraphButton";
+import { SettingsButton } from "../buttons/SettingsButton";
+import { Digest } from "Digest";
+import { DigestComponent } from "../digest";
+
+const DATA: Digest[] = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "First Item",
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Second Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d73",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d74",
+    title: "Third Item",
+  },
+];
 
 export const HomeHeader = () => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.rect}>
         <View style={styles.ellipseRow}>
-          <Svg viewBox="0 0 31.7 31.7" style={styles.ellipse}>
+          <Svg viewBox="0 0 32 32" style={styles.ellipse}>
             <Ellipse
               strokeWidth={0}
-              fill="rgba(230, 230, 230,1)"
+              fill="yellow"
               cx={16}
               cy={16}
               rx={16}
               ry={16}
             ></Ellipse>
           </Svg>
-          <Text style={styles.title}>Alexandr</Text>
-          {/* <Icon name="settings" style={styles.icon}></Icon> */}
+          <Text style={styles.title}>Привет, Alexandr</Text>
+          <SettingsButton
+            onPress={() => console.log("Press settings button")}
+          />
         </View>
         <Text style={styles.text}>
           Ты, Манифестирующий генератор, профиль 4/1 оппортунист исследователь
         </Text>
-        {/* <MaterialButtonLight
-          style={styles.materialButtonLight}
-        ></MaterialButtonLight> */}
+        <BodygraphButton
+          title="Твой бодиграф"
+          onPress={() => console.log("Text")}
+        />
+        <DigestComponent items={DATA} onPress={() => console.log("")} />
       </View>
     </View>
   );
@@ -45,23 +69,28 @@ export const HomeHeader = () => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 300,
   },
   rect: {
+    flexDirection: "column",
     width: "100%",
-    height: 300,
-    backgroundColor: THEME.BLACK_COLOR_APP,
   },
   ellipse: {
     width: 32,
     height: 32,
   },
   title: {
-    fontFamily: "sf-regular",
     color: "white",
     fontSize: 24,
     marginLeft: 16,
     marginTop: 2,
+    flex: 1,
+  },
+  text: {
+    color: "white",
+    fontSize: 13,
+    marginTop: 4,
+    marginLeft: 64,
+    marginRight: 16,
   },
   icon: {
     color: THEME.BLACK_COLOR_APP,
@@ -74,19 +103,12 @@ const styles = StyleSheet.create({
   ellipseRow: {
     height: 32,
     flexDirection: "row",
-    marginTop: 15,
+    alignItems: "center",
+    marginTop: 16,
     marginLeft: 16,
-    marginRight: 40,
+    marginRight: 16,
   },
-  text: {
-    fontFamily: "sf-regular",
-    color: "white",
-    fontSize: 13,
-    width: 256,
-    height: 15,
-    marginLeft: 64,
-    flex: 1,
-  },
+
   materialButtonLight: {
     height: 25,
     width: 144,

@@ -35,7 +35,6 @@ i18next.use(initReactI18next).init({
 
 export default function App() {
   const [isRedy, setIsRedy] = useState(false);
-  const { t } = useTranslation();
 
   if (!isRedy) {
     return (
