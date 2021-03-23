@@ -4,9 +4,9 @@ import AppLoading from "expo-app-loading";
 import store from "./src/store/index";
 import { bootstrap } from "./src/bootstrap";
 import { AppNavigator } from "./src/navigation/AppNavigation";
-import { NativeModules, Platform, StatusBar } from "react-native";
+import { NativeModules, Platform } from "react-native";
 import i18next from "i18next";
-import { initReactI18next, useTranslation } from "react-i18next";
+import { initReactI18next } from "react-i18next";
 import homeEn from "./src/i18n/en/home.json";
 import homeRu from "./src/i18n/ru/home.json";
 
@@ -26,8 +26,10 @@ const resources = {
   },
 };
 
+console.log(locale);
+
 i18next.use(initReactI18next).init({
-  lng: locale.substring(0, 2),
+  lng: "ru",
   fallbackLng: "ru",
   debug: false,
   resources: resources,

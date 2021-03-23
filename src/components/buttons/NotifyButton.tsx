@@ -18,12 +18,17 @@ export const NotifyButton = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    // width: "100%",
-    height: 44,
+    height: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 13,
+    borderWidth: 1,
+    borderColor: "red",
   },
   title: {
-    flex: 1,
+    textAlign: "center",
     paddingLeft: 16,
+    alignSelf: "center",
     paddingRight: 16,
   },
 });

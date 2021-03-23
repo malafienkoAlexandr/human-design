@@ -1,16 +1,16 @@
 import React from "react";
-import { FlatList, SectionList, Text } from "react-native";
+import { FlatList, Text } from "react-native";
 import { Home } from "Home";
 import { Transit } from "Transit";
 import { PersonalForecast } from "PersonalForecast";
-import { PersonalForecastType } from "PersonalForecastType";
+import { PersonalForecastType } from "../../enums";
 import { User } from "UserModule";
 import { Single } from "Single";
 import { Today } from "./Today";
 
 const today: Single = {
-  title: "",
-  description: "",
+  title: "Сегодня",
+  description: "Настоящая динамо-машина с самым большим энергетическим...",
 };
 
 const transitData: Transit[] = [
@@ -24,7 +24,7 @@ const transitData: Transit[] = [
 const personalForecastData: PersonalForecast[] = [
   {
     id: "0",
-    type: { type: "" },
+    type: PersonalForecastType.general,
     text: "",
   },
 ];
@@ -44,8 +44,10 @@ const DATA: Home[] = [
 export const HomeList = () => {
   return (
     <FlatList
+      style={{ height: "100%", width: "100%", backgroundColor: "white" }}
       data={DATA}
       renderItem={(item) => {
+        console.log(item);
         return <Today item={item.item.today} isOnNotify={true} />;
       }}
       keyExtractor={(item) => item.id}

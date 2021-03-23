@@ -1,15 +1,3 @@
-declare module "PersonalForecastType" {
-  export type PersonalForecastType = {
-    type: general | love | health | business;
-  };
-}
-// const enum PersonalForecastType {
-//   general,
-//   love,
-//   health,
-//   business,
-// }
-
 declare module "PersonalForecast" {
   export type PersonalForecast = {
     id: string;

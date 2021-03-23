@@ -23,12 +23,19 @@ export const Today = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    margin: 16,
   },
   topView: {
-    flexDirection: "column",
+    alignItems: "center",
+    flexDirection: "row",
   },
   title: {
+    fontSize: 32,
+    backgroundColor: "yellow",
+    marginRight: 16,
     flex: 1,
   },
-  description: {},
+  description: {
+    paddingTop: 16,
+  },
 });
