@@ -1,9 +1,17 @@
 import React from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList, SectionList, Text } from "react-native";
 import { Home } from "Home";
 import { Transit } from "Transit";
 import { PersonalForecast } from "PersonalForecast";
+import { PersonalForecastType } from "PersonalForecastType";
 import { User } from "UserModule";
+import { Single } from "Single";
+import { Today } from "./Today";
+
+const today: Single = {
+  title: "",
+  description: "",
+};
 
 const transitData: Transit[] = [
   {
@@ -15,32 +23,32 @@ const transitData: Transit[] = [
 
 const personalForecastData: PersonalForecast[] = [
   {
-    id: "",
-    type: PersonalForecastType.general,
+    id: "0",
+    type: { type: "" },
     text: "",
   },
 ];
 
 const friendsData: User[] = [];
 
-const DATA: Home = {
-  today: {
-    title: "",
-    description: "",
+const DATA: Home[] = [
+  {
+    id: "0",
+    today: today,
+    transit: transitData,
+    personalForecast: personalForecastData,
+    friends: friendsData,
   },
-  transit: transitData,
-  personalForecast: personalForecastData,
-  friends: [{}],
-};
+];
 
-// export const HomeList = () => {
-//   return (
-//     <FlatList
-//       data={{ name: string }}
-//       renderItem={(item) => {
-//         return <Text>Hello</Text>;
-//       }}
-//       keyExtractor={(item) => item.name + item}
-//     />
-//   );
-// };
+export const HomeList = () => {
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={(item) => {
+        return <Today item={item.item.today} isOnNotify={true} />;
+      }}
+      keyExtractor={(item) => item.id}
+    />
+  );
+};

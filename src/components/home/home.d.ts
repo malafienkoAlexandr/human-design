@@ -1,9 +1,14 @@
-declare enum PersonalForecastType {
-  general,
-  love,
-  health,
-  business,
+declare module "PersonalForecastType" {
+  export type PersonalForecastType = {
+    type: general | love | health | business;
+  };
 }
+// const enum PersonalForecastType {
+//   general,
+//   love,
+//   health,
+//   business,
+// }
 
 declare module "PersonalForecast" {
   export type PersonalForecast = {
@@ -32,6 +37,7 @@ declare module "Home" {
   import { User } from "User";
 
   export type Home = {
+    id: string;
     today: Single;
     transit: Transit[];
     personalForecast: PersonalForecast[];

@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
 import { Text, View } from "react-native";
 import { HomeHeader } from "../../components/header";
+import { HomeList } from "../../components/home/List";
 import { THEME } from "../../theme";
 
 export const HomeScreen = ({}) => {
@@ -16,6 +17,7 @@ export const HomeScreen = ({}) => {
     >
       <SafeAreaView>
         <HomeHeader />
+        <HomeList />
       </SafeAreaView>
     </View>
   );
