@@ -7,6 +7,7 @@ import { BodygraphButton } from "../buttons/BodygraphButton";
 import { SettingsButton } from "../buttons/SettingsButton";
 import { Digest } from "Digest";
 import { DigestComponent } from "../digest";
+import { UserLogo } from "../UserLogo";
 
 const DATA: Digest[] = [
   {
@@ -38,16 +39,7 @@ export const HomeHeader = () => {
     <View style={styles.container}>
       <View style={styles.rect}>
         <View style={styles.ellipseRow}>
-          <Svg viewBox="0 0 32 32" style={styles.ellipse}>
-            <Ellipse
-              strokeWidth={0}
-              fill="yellow"
-              cx={16}
-              cy={16}
-              rx={16}
-              ry={16}
-            ></Ellipse>
-          </Svg>
+          <UserLogo imgPath="" onPress={() => console.log("press")} />
           <Text style={styles.title}>Привет, Alexandr</Text>
           <SettingsButton
             onPress={() => console.log("Press settings button")}
@@ -73,10 +65,6 @@ const styles = StyleSheet.create({
   rect: {
     flexDirection: "column",
     width: "100%",
-  },
-  ellipse: {
-    width: 32,
-    height: 32,
   },
   title: {
     color: "white",

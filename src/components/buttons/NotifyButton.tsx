@@ -4,11 +4,12 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 type Props = {
   title: string;
   enabled: boolean;
+  onPress: () => void;
 };
 
 export const NotifyButton = (props: Props) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.onPress}>
       <View style={styles.container}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
@@ -19,6 +20,7 @@ export const NotifyButton = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     height: 25,
+    marginRight: 16,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 13,

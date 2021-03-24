@@ -1,12 +1,13 @@
 import React from "react";
-import { FlatList, Text } from "react-native";
-import { Home } from "Home";
+import { ScrollView } from "react-native";
 import { Transit } from "Transit";
 import { PersonalForecast } from "PersonalForecast";
 import { PersonalForecastType } from "../../enums";
 import { User } from "UserModule";
 import { Single } from "Single";
 import { Today } from "./Today";
+import { TransitList } from "./Transit";
+import { PersonalForecastList } from "./PersonalForecast";
 
 const today: Single = {
   title: "Сегодня",
@@ -31,26 +32,22 @@ const personalForecastData: PersonalForecast[] = [
 
 const friendsData: User[] = [];
 
-const DATA: Home[] = [
-  {
-    id: "0",
-    today: today,
-    transit: transitData,
-    personalForecast: personalForecastData,
-    friends: friendsData,
-  },
-];
-
-export const HomeList = () => {
+export const Content = () => {
   return (
-    <FlatList
-      style={{ height: "100%", width: "100%", backgroundColor: "white" }}
-      data={DATA}
-      renderItem={(item) => {
-        console.log(item);
-        return <Today item={item.item.today} isOnNotify={true} />;
-      }}
-      keyExtractor={(item) => item.id}
-    />
+    <ScrollView
+      style={{ width: "100%", height: "100%", backgroundColor: "white" }}
+    >
+      <Today
+        item={today}
+        isOnNotify={true}
+        onPress={() => console.log("press")}
+      />
+      <TransitList items={transitData} onPress={() => console.log("press")} />
+
+      <PersonalForecastList
+        items={personalForecastData}
+        onPress={() => console.log("press")}
+      />
+    </ScrollView>
   );
 };

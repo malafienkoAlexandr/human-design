@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "flex-start",
     marginTop: 16,
-    marginLeft: 64,
+    marginLeft: 16,
   },
   text: {
     fontSize: 13,
