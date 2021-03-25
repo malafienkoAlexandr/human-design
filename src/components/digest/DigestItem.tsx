@@ -17,18 +17,15 @@ export const DigestItem = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   item: {
     width: 90,
     height: 90,
     borderRadius: 8,
     backgroundColor: "#f9c2ff",
-    padding: 8,
+    paddingLeft: 4,
     justifyContent: "flex-end",
-    marginVertical: 8,
-    marginHorizontal: 8,
+    marginVertical: 16,
+    marginHorizontal: 4,
   },
   title: {
     fontSize: 11,

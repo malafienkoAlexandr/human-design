@@ -8,6 +8,7 @@ import { Single } from "Single";
 import { Today } from "./Today";
 import { TransitList } from "./Transit";
 import { PersonalForecastList } from "./PersonalForecast";
+import { Friends } from "./Friends";
 
 const today: Single = {
   title: "Сегодня",
@@ -56,6 +57,12 @@ export const Content = () => {
           items={personalForecastData}
           onPress={() => console.log("press")}
         />
+        <Friends
+          items={friendsData}
+          onPress={() => console.log("press")}
+          addAction={() => console.log("press")}
+          showAllAction={() => console.log("press")}
+        ></Friends>
       </ScrollView>
     </View>
   );

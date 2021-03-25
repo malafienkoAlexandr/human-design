@@ -31,14 +31,12 @@ export const TransitList = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     height: 142,
     marginLeft: 26,
     marginRight: 26,
     marginBottom: 26,
     borderRadius: 8,
     backgroundColor: THEME.BLACK_COLOR_APP,
-    flexDirection: "column",
   },
   title: {
     paddingLeft: 16,

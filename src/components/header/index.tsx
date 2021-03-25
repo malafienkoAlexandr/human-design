@@ -50,6 +50,7 @@ export const HomeHeader = () => {
         </Text>
         <BodygraphButton
           title="Твой бодиграф"
+          style={{ marginLeft: 64 }}
           onPress={() => console.log("Text")}
         />
         <DigestComponent items={DATA} onPress={() => console.log("")} />

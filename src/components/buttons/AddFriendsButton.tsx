@@ -6,21 +6,18 @@ import {
   StyleSheet,
   ViewStyle,
 } from "react-native";
+import { THEME } from "../../theme";
 
 type Props = {
-  title: string;
   style?: ViewStyle;
   onPress(): void;
 };
 
-export const BodygraphButton = (props: Props) => {
+export const AddFriendsButton = (props: Props) => {
   return (
-    <TouchableOpacity
-      style={{ alignSelf: "flex-start" }}
-      onPress={props.onPress}
-    >
+    <TouchableOpacity onPress={props.onPress}>
       <View style={{ ...styles.container, ...props.style }}>
-        <Text style={styles.text}>{props.title}</Text>
+        <Text style={styles.text}>Добавить друга</Text>
       </View>
     </TouchableOpacity>
   );
@@ -28,19 +25,21 @@ export const BodygraphButton = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 25,
+    width: 90,
+    height: 120,
     alignSelf: "flex-start",
     backgroundColor: "white",
-    borderRadius: 12,
+    borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
+
     marginTop: 16,
     marginLeft: 16,
   },
   text: {
     fontSize: 13,
     fontWeight: "500",
-    color: "black",
+    color: THEME.WHITE_COLOR,
     paddingLeft: 16,
     paddingRight: 16,
   },

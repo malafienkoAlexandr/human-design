@@ -14,6 +14,7 @@ export const DigestComponent = (props: Props) => {
     <View style={styles.container}>
       <Text style={styles.title}>Дайджест</Text>
       <FlatList
+        contentContainerStyle={{ paddingLeft: 16, paddingRight: 16 }}
         horizontal
         data={props.items}
         renderItem={(item) => (
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   title: {
-    paddingLeft: 16,
+    paddingLeft: 26,
     color: "white",
     fontSize: 13,
     fontWeight: "500",

@@ -20,15 +20,3 @@ declare module "Single" {
     description: string;
   };
 }
-
-declare module "Home" {
-  import { User } from "User";
-
-  export type Home = {
-    id: string;
-    today: Single;
-    transit: Transit[];
-    personalForecast: PersonalForecast[];
-    friends: User[];
-  };
-}
