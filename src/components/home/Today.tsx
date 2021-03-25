@@ -27,20 +27,25 @@ export const Today = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    margin: 26,
+    flex: 1,
+    marginTop: 16,
+    marginLeft: 26,
+    marginRight: 26,
+    marginBottom: 16,
+    // backgroundColor: "black",
   },
   topView: {
     alignItems: "center",
     flexDirection: "row",
-    marginRight: 26,
   },
   title: {
     fontSize: 32,
+    fontWeight: "bold",
     marginRight: 26,
     flex: 1,
   },
   description: {
-    paddingTop: 26,
+    fontSize: 15,
+    paddingTop: 16,
   },
 });

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   title: {
-    fontSize: 13,
+    fontSize: 11,
     textAlign: "center",
     alignItems: "flex-end",
     justifyContent: "flex-end",

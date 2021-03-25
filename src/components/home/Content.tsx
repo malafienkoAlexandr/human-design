@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Transit } from "Transit";
 import { PersonalForecast } from "PersonalForecast";
 import { PersonalForecastType } from "../../enums";
@@ -34,20 +34,27 @@ const friendsData: User[] = [];
 
 export const Content = () => {
   return (
-    <ScrollView
-      style={{ width: "100%", height: "100%", backgroundColor: "white" }}
-    >
-      <Today
-        item={today}
-        isOnNotify={true}
-        onPress={() => console.log("press")}
-      />
-      <TransitList items={transitData} onPress={() => console.log("press")} />
-
-      <PersonalForecastList
-        items={personalForecastData}
-        onPress={() => console.log("press")}
-      />
-    </ScrollView>
+    <View style={{ width: "100%", height: "100%" }}>
+      <ScrollView style={styles.scroll}>
+        <Today
+          item={today}
+          isOnNotify={true}
+          onPress={() => console.log("press")}
+        />
+        <TransitList items={transitData} onPress={() => console.log("press")} />
+        <PersonalForecastList
+          items={personalForecastData}
+          onPress={() => console.log("press")}
+        />
+      </ScrollView>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  scroll: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "white",
+  },
+});

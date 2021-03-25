@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     backgroundColor: "black",
+    borderRadius: 8,
   },
   text: {},
 });

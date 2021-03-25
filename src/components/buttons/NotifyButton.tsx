@@ -20,17 +20,18 @@ export const NotifyButton = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     height: 25,
-    marginRight: 16,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 13,
     borderWidth: 1,
-    borderColor: "red",
+    borderColor: "grey",
   },
   title: {
     textAlign: "center",
     paddingLeft: 16,
     alignSelf: "center",
     paddingRight: 16,
+    fontSize: 13,
+    fontWeight: "500",
   },
 });

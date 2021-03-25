@@ -44,11 +44,12 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingRight: 16,
     fontSize: 24,
+    fontWeight: "bold",
     color: "white",
   },
   text: {
     paddingLeft: 16,
-    paddingTop: 16,
+    paddingTop: 8,
     paddingRight: 16,
     fontSize: 15,
     color: "white",

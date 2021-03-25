@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 13,
+    fontWeight: "500",
     color: "black",
     paddingLeft: 16,
     paddingRight: 16,
