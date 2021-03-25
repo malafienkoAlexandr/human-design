@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { Transit } from "Transit";
+import { THEME } from "../../theme";
 import { BodygraphButton } from "../buttons/BodygraphButton";
 
 type Props = {
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     marginRight: 26,
     marginBottom: 26,
     borderRadius: 8,
-    backgroundColor: "#f9c2ff",
+    backgroundColor: THEME.BLACK_COLOR_APP,
     flexDirection: "column",
   },
   title: {
@@ -45,13 +46,13 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     fontSize: 24,
     fontWeight: "bold",
-    color: "white",
+    color: THEME.WHITE_COLOR,
   },
   text: {
     paddingLeft: 16,
     paddingTop: 8,
     paddingRight: 16,
     fontSize: 15,
-    color: "white",
+    color: THEME.WHITE_COLOR,
   },
 });

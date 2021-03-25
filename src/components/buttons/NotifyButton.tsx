@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { THEME } from "../../theme";
 
 type Props = {
   title: string;
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 13,
     borderWidth: 1,
-    borderColor: "grey",
+    borderColor: THEME.GREY_COLOR_40,
   },
   title: {
     textAlign: "center",

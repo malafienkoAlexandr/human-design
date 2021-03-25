@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    color: "white",
+    color: THEME.GREY_COLOR_60,
     fontSize: 13,
     marginTop: 4,
     marginLeft: 64,

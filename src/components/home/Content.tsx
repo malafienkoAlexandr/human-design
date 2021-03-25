@@ -28,13 +28,23 @@ const personalForecastData: PersonalForecast[] = [
     type: PersonalForecastType.general,
     text: "",
   },
+  {
+    id: "1",
+    type: PersonalForecastType.general,
+    text: "",
+  },
+  {
+    id: "2",
+    type: PersonalForecastType.general,
+    text: "",
+  },
 ];
 
 const friendsData: User[] = [];
 
 export const Content = () => {
   return (
-    <View style={{ width: "100%", height: "100%" }}>
+    <View style={styles.main}>
       <ScrollView style={styles.scroll}>
         <Today
           item={today}
@@ -52,6 +62,10 @@ export const Content = () => {
 };
 
 const styles = StyleSheet.create({
+  main: {
+    width: "100%",
+    height: "100%",
+  },
   scroll: {
     width: "100%",
     height: "100%",

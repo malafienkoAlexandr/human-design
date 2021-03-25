@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Single } from "Single";
+import { THEME } from "../../theme";
 import { NotifyButton } from "../buttons/NotifyButton";
 
 type Props = {
@@ -47,5 +48,6 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 15,
     paddingTop: 16,
+    color: THEME.GREY_COLOR_80,
   },
 });
