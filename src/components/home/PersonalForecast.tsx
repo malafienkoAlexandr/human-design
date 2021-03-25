@@ -11,35 +11,29 @@ type Props = {
 };
 
 export const PersonalForecastList = (props: Props) => {
-  const renderItem = (item: PersonalForecast) => {
-    return (
-      <View style={{}}>
-        <View style={{}}></View>
-      </View>
-    );
-  };
   return (
     <View style={styles.container}>
-      <View style={styles.childContainer}>
-        <View style={styles.personalContent}>
-          <UserLogo imgPath="" onPress={() => console.log("press")} />
-          <View style={styles.personalChildContent}>
-            <Text style={styles.title}>Персональный прогноз</Text>
-            <Text style={styles.description}>Проектор, 10 июля</Text>
-          </View>
+      <View style={styles.personalHeader}>
+        <UserLogo imgPath="" onPress={() => console.log("press")} />
+        <View style={styles.personalChildContent}>
+          <Text style={styles.title}>Персональный прогноз</Text>
+          <Text style={styles.description}>Проектор, 10 июля</Text>
         </View>
       </View>
-      <FlatList
-        style={styles.list}
-        horizontal
-        contentContainerStyle={{ paddingLeft: 36 }}
-        data={props.items}
-        showsHorizontalScrollIndicator={false}
-        renderItem={(item) => (
-          <ForecastItem item={item.item} onPress={props.onPress} />
-        )}
-        keyExtractor={(item) => item.id}
-      />
+      <View style={styles.personalContent}>
+        <View style={styles.main}></View>
+        <FlatList
+          style={styles.list}
+          horizontal
+          contentContainerStyle={{ paddingLeft: 34, paddingRight: 34 }}
+          data={props.items}
+          showsHorizontalScrollIndicator={false}
+          renderItem={(item) => (
+            <ForecastItem item={item.item} onPress={props.onPress} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
     </View>
   );
 };
@@ -47,36 +41,44 @@ export const PersonalForecastList = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    backgroundColor: "#F7F7F7",
+    flex: 1,
+    paddingBottom: 16,
+    backgroundColor: THEME.GREY_COLOR_40,
   },
   personalContent: {
     width: "100%",
-    height: 220,
-    flexDirection: "row",
-    padding: 16,
+    height: 150,
+    backgroundColor: "transparent",
   },
-  childContainer: {
-    flex: 1,
-    marginBottom: 24,
+  personalHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 16,
     marginTop: 24,
     marginLeft: 26,
     marginRight: 26,
-    borderRadius: 8,
-    backgroundColor: "white",
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    backgroundColor: THEME.WHITE_COLOR,
   },
-  scroll: {
-    padding: 16,
-    width: "100%",
+  main: {
+    height: 134,
+    marginTop: 0,
+    marginLeft: 26,
+    marginRight: 26,
+    backgroundColor: THEME.WHITE_COLOR,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
   list: {
-    height: 120,
+    height: 156,
+    flex: 1,
     position: "absolute",
   },
   personalChildContent: {
-    marginLeft: 16,
+    width: "100%",
     padding: 16,
     marginRight: 16,
-    backgroundColor: "transparent",
   },
   title: {
     fontSize: 15,
