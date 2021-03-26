@@ -11,6 +11,7 @@ import {
 import { THEME } from "../../theme";
 import { User } from "UserModule";
 import { AddFriendsButton } from "../buttons/AddFriendsButton";
+import { Friend } from "./Friend";
 
 type Props = {
   items: User[];
@@ -29,14 +30,16 @@ export const Friends = (props: Props) => {
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
-        <ScrollView>
+        <ScrollView horizontal={true}>
           <AddFriendsButton onPress={props.addAction}></AddFriendsButton>
           <FlatList
             contentContainerStyle={{}}
             horizontal
             data={props.items}
             keyExtractor={(item) => item.id}
-            renderItem={() => <View></View>}
+            renderItem={(item) => (
+              <Friend item={item.item} onPress={() => console.log("press")} />
+            )}
           />
         </ScrollView>
       </View>

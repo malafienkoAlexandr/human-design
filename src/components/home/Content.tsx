@@ -9,6 +9,7 @@ import { Today } from "./Today";
 import { TransitList } from "./Transit";
 import { PersonalForecastList } from "./PersonalForecast";
 import { Friends } from "./Friends";
+import { THEME } from "../../theme";
 
 const today: Single = {
   title: "Сегодня",
@@ -41,40 +42,47 @@ const personalForecastData: PersonalForecast[] = [
   },
 ];
 
-const friendsData: User[] = [];
+const friendsData: User[] = [
+  {
+    id: "0001",
+    name: "Оксана",
+    birthDate: "",
+    birthTime: "",
+    utc: 1,
+    city: "",
+    country: "",
+  },
+];
 
 export const Content = () => {
   return (
-    <View style={styles.main}>
-      <ScrollView style={styles.scroll}>
-        <Today
-          item={today}
-          isOnNotify={true}
-          onPress={() => console.log("press")}
-        />
-        <TransitList items={transitData} onPress={() => console.log("press")} />
-        <PersonalForecastList
-          items={personalForecastData}
-          onPress={() => console.log("press")}
-        />
-        <Friends
-          items={friendsData}
-          onPress={() => console.log("press")}
-          addAction={() => console.log("press")}
-          showAllAction={() => console.log("press")}
-        ></Friends>
-      </ScrollView>
-    </View>
+    <ScrollView
+      style={styles.scroll}
+      contentContainerStyle={{ marginBottom: 100 }}
+    >
+      <Today
+        item={today}
+        isOnNotify={true}
+        onPress={() => console.log("press")}
+      />
+      <TransitList items={transitData} onPress={() => console.log("press")} />
+      <PersonalForecastList
+        items={personalForecastData}
+        onPress={() => console.log("press")}
+      />
+      <Friends
+        items={friendsData}
+        onPress={() => console.log("press")}
+        addAction={() => console.log("press")}
+        showAllAction={() => console.log("press")}
+      ></Friends>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  main: {
-    width: "100%",
-    height: "100%",
-  },
   scroll: {
     width: "100%",
-    backgroundColor: "white",
+    backgroundColor: THEME.WHITE_COLOR,
   },
 });

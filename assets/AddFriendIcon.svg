@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="32px" viewBox="0 0 33 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>AddFriendIcon</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-264.000000, -169.000000)" fill="#FFFFFF">
+            <g id="AddFriend" transform="translate(264.000000, 169.000000)">
+                <rect id="Rectangle" fill-opacity="0.01" fill-rule="nonzero" x="0" y="0" width="32" height="32"></rect>
+                <path d="M0,16 C0,24.8366 7.16344,32 16,32 C24.8366,32 32,24.8366 32,16 C32,7.16344 24.8366,0 16,0 C7.16344,0 0,7.16344 0,16 Z M30.6667,16 C30.6667,24.1002 24.1002,30.6667 16,30.6667 C7.89982,30.6667 1.33333,24.1002 1.33333,16 C1.33333,7.89987 7.89982,1.33337 16,1.33337 C24.1002,1.33337 30.6667,7.89987 30.6667,16 Z" id="Shape" opacity="0.4"></path>
+                <path d="M17,15 L17,9.66663 C17,9.11434 16.5523,8.66663 16,8.66663 C15.4477,8.66663 15,9.11434 15,9.66663 L15,15 L9.66669,15 C9.1144,15 8.66669,15.4477 8.66669,16 C8.66669,16.5522 9.1144,17 9.66669,17 L15,17 L15,22.3333 C15,22.8856 15.4477,23.3333 16,23.3333 C16.5523,23.3333 17,22.8856 17,22.3333 L17,17 L22.3334,17 C22.8856,17 23.3334,16.5522 23.3334,16 C23.3334,15.4477 22.8856,15 22.3334,15 L17,15 Z" id="Path" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

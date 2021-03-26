@@ -61,6 +61,7 @@ export const HomeHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: THEME.BLACK_COLOR_APP,
     width: "100%",
   },
   rect: {

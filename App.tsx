@@ -4,11 +4,19 @@ import AppLoading from "expo-app-loading";
 import store from "./src/store/index";
 import { bootstrap } from "./src/bootstrap";
 import { AppNavigator } from "./src/navigation/AppNavigation";
-import { NativeModules, Platform } from "react-native";
+import {
+  NativeModules,
+  Platform,
+  StatusBar,
+  View,
+  StyleSheet,
+} from "react-native";
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import homeEn from "./src/i18n/en/home.json";
 import homeRu from "./src/i18n/ru/home.json";
+import { THEME } from "./src/theme";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 
 const { RNI18n } = NativeModules;
 
@@ -50,7 +58,17 @@ export default function App() {
 
   return (
     <Provider store={store}>
+      <View style={styles.StatusBar}>
+        <StatusBar translucent barStyle="light-content" />
+      </View>
       <AppNavigator />
     </Provider>
   );
 }
+
+const styles = StyleSheet.create({
+  StatusBar: {
+    height: getStatusBarHeight(),
+    backgroundColor: THEME.BLACK_COLOR_APP,
+  },
+});

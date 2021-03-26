@@ -36,7 +36,6 @@ export const AppNavigator = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StatusBar barStyle="light-content" />
         <MainNavigator />
       </NavigationContainer>
     </SafeAreaProvider>

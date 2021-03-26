@@ -7,6 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { THEME } from "../../theme";
+import AddFriendIcon from "../../../assets/AddFriendIcon.svg";
 
 type Props = {
   style?: ViewStyle;
@@ -17,6 +18,7 @@ export const AddFriendsButton = (props: Props) => {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={{ ...styles.container, ...props.style }}>
+        <AddFriendIcon />
         <Text style={styles.text}>Добавить друга</Text>
       </View>
     </TouchableOpacity>
@@ -28,19 +30,22 @@ const styles = StyleSheet.create({
     width: 90,
     height: 120,
     alignSelf: "flex-start",
-    backgroundColor: "white",
-    borderRadius: 8,
-    justifyContent: "center",
     alignItems: "center",
 
+    backgroundColor: THEME.BLACK_COLOR_APP,
+    borderRadius: 8,
+    justifyContent: "flex-end",
     marginTop: 16,
     marginLeft: 16,
   },
   text: {
     fontSize: 13,
     fontWeight: "500",
+    textAlign: "center",
     color: THEME.WHITE_COLOR,
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingTop: 16,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingBottom: 16,
   },
 });
