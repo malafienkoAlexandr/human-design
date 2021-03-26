@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Animated } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { THEME } from "../../theme";
 import { useTranslation } from "react-i18next";
 import { BodygraphButton } from "../buttons/BodygraphButton";
@@ -32,11 +33,33 @@ const DATA: Digest[] = [
   },
 ];
 
-export const HomeHeader = () => {
-  const { t } = useTranslation();
+type Props = {
+  animValue: number;
+};
 
+const HEADER_HEIGHT = 90;
+
+export const HomeHeader = (props: Props) => {
+  const insets = useSafeAreaInsets();
+  const headerHeight = HEADER_HEIGHT + props.animValue;
+  // props.animValue.interpolate({
+  //   inputRange: [0, HEADER_HEIGHT + insets.top],
+  //   outputRange: [HEADER_HEIGHT + insets.top, insets.top + 90],
+  //   extrapolate: "clamp",
+  // });
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={{
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 10,
+        position: "absolute",
+        height: headerHeight,
+        backgroundColor: THEME.BLACK_COLOR_APP,
+        overflow: "hidden",
+      }}
+    >
       <View style={styles.rect}>
         <View style={styles.ellipseRow}>
           <UserLogo imgPath="" onPress={() => console.log("press")} />
@@ -48,14 +71,8 @@ export const HomeHeader = () => {
         <Text style={styles.text}>
           Ты, Манифестирующий генератор, профиль 4/1 оппортунист исследователь
         </Text>
-        <BodygraphButton
-          title="Твой бодиграф"
-          style={{ marginLeft: 64 }}
-          onPress={() => console.log("Text")}
-        />
-        <DigestComponent items={DATA} onPress={() => console.log("")} />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -83,14 +100,6 @@ const styles = StyleSheet.create({
     marginLeft: 64,
     marginRight: 16,
   },
-  icon: {
-    color: THEME.BLACK_COLOR_APP,
-    fontSize: 24,
-    height: 0,
-    width: 0,
-    marginLeft: 271,
-    marginTop: 3,
-  },
   ellipseRow: {
     height: 32,
     flexDirection: "row",
@@ -98,15 +107,5 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginLeft: 16,
     marginRight: 16,
-  },
-
-  materialButtonLight: {
-    height: 25,
-    width: 144,
-    borderWidth: 0,
-    borderColor: "#000000",
-    borderRadius: 12,
-    marginTop: 27,
-    marginLeft: 64,
   },
 });

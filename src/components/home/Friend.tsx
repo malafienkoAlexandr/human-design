@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { PersonalForecast } from "PersonalForecast";
 import { User } from "UserModule";
 import { THEME } from "../../theme";
+import { UserLogo } from "../UserLogo";
 
 type Props = {
   item: User;
@@ -13,6 +14,7 @@ export const Friend = (props: Props) => {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={styles.main}>
+        <UserLogo disabled={true} imgPath="" />
         <Text style={styles.text}>{props.item.name}</Text>
       </View>
     </TouchableOpacity>
@@ -33,6 +35,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: THEME.WHITE_COLOR,
+    paddingTop: 16,
     paddingBottom: 16,
     paddingLeft: 8,
     paddingRight: 8,

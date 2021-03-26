@@ -4,12 +4,13 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 type Props = {
   imgPath: string;
-  onPress: () => void;
+  disabled?: boolean;
+  onPress?: () => void;
 };
 
 export const UserLogo = (props: Props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity disabled={props.disabled} onPress={props.onPress}>
       <Svg viewBox="0 0 32 32" style={styles.ellipse}>
         <Ellipse
           strokeWidth={0}

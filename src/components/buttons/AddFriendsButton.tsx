@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     marginTop: 16,
     marginLeft: 16,
+    shadowColor: THEME.BLACK_COLOR_APP,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 2,
+    shadowOpacity: 0.2,
   },
   text: {
     fontSize: 13,

@@ -12,7 +12,7 @@ import {
   StyleSheet,
 } from "react-native";
 import i18next from "i18next";
-import { initReactI18next } from "react-i18next";
+import { initReactI18next, useTranslation } from "react-i18next";
 import homeEn from "./src/i18n/en/home.json";
 import homeRu from "./src/i18n/ru/home.json";
 import { THEME } from "./src/theme";
@@ -25,33 +25,32 @@ const locale =
     ? NativeModules.SettingsManager.settings.AppleLocale
     : NativeModules.I18nManager.localeIdentifier;
 
-const resources = {
-  en: {
-    home: homeEn,
-  },
-  ru: {
-    home: homeRu,
-  },
-};
-
 console.log(locale);
 
 i18next.use(initReactI18next).init({
-  lng: "ru",
+  lng: "en",
   fallbackLng: "ru",
   debug: false,
-  resources: resources,
+  react: {
+    wait: true,
+  },
+  resources: {
+    ru: { translation: require("./src/i18n/ru/home.json") },
+    en: { translation: require("./src/i18n/en/home.json") },
+  },
 });
 
 export default function App() {
   const [isRedy, setIsRedy] = useState(false);
+
+  const { t } = useTranslation();
 
   if (!isRedy) {
     return (
       <AppLoading
         startAsync={bootstrap}
         onFinish={() => setIsRedy(true)}
-        onError={(error) => console.log(error)}
+        onError={(error) => console.log("")}
       />
     );
   }

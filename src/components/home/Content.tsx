@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, Animated } from "react-native";
 import { Transit } from "Transit";
 import { PersonalForecast } from "PersonalForecast";
 import { PersonalForecastType } from "../../enums";
@@ -8,8 +8,11 @@ import { Single } from "Single";
 import { Today } from "./Today";
 import { TransitList } from "./Transit";
 import { PersonalForecastList } from "./PersonalForecast";
+import { DigestComponent } from "../digest/index";
+import { Digest } from "Digest";
 import { Friends } from "./Friends";
 import { THEME } from "../../theme";
+import { Bodygraph } from "./Bodygraph";
 
 const today: Single = {
   title: "Сегодня",
@@ -54,12 +57,55 @@ const friendsData: User[] = [
   },
 ];
 
-export const Content = () => {
+const DATA: Digest[] = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "First Item",
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Second Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d73",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d74",
+    title: "Third Item",
+  },
+];
+
+type Props = {
+  // offset: number;
+  scrollDidScroll: (value: number) => void;
+};
+
+export const Content = (props: Props) => {
   return (
     <ScrollView
       style={styles.scroll}
-      contentContainerStyle={{ marginBottom: 100 }}
+      contentContainerStyle={{
+        paddingTop: 90,
+      }}
+      scrollEventThrottle={16}
+      // onScroll={Animated.event(
+      //   [{ nativeEvent: { contentOffset: { y: props.offset } } }],
+      //   { useNativeDriver: false }
+      // )}
+      onScroll={(obj) => {
+        props.scrollDidScroll(-obj.nativeEvent.contentOffset.y);
+      }}
     >
+      <Bodygraph
+        title="Твой бодиграф"
+        onPress={() => console.log("on press")}
+      />
+      <DigestComponent items={DATA} onPress={() => console.log("")} />
       <Today
         item={today}
         isOnNotify={true}
@@ -84,5 +130,20 @@ const styles = StyleSheet.create({
   scroll: {
     width: "100%",
     backgroundColor: THEME.WHITE_COLOR,
+  },
+  title: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 24,
+    marginLeft: 16,
+    marginTop: 2,
+    flex: 1,
+  },
+  text: {
+    color: THEME.GREY_COLOR_60,
+    fontSize: 13,
+    marginTop: 4,
+    marginLeft: 64,
+    marginRight: 16,
   },
 });

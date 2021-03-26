@@ -1,3 +1,4 @@
 {
-  "button.bodygraph": "My bodygraph"
+  "button_bodygraph": "My bodygraph",
+  "hello": "HelloWorld"
 }
