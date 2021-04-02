@@ -4,3 +4,10 @@ export enum PersonalForecastType {
   health,
   business,
 }
+
+export enum AssistantPageType {
+  name,
+  birthPlace,
+  birthTime,
+  birthDate,
+}

@@ -4,4 +4,5 @@ export const THEME = {
   GREY_COLOR_60: "#8E8E93",
   GREY_COLOR_80: "#24272C",
   WHITE_COLOR: "#FFFFFF",
+  GREY_COLOR_80_A: "rgba(36, 39, 44, 0.8)",
 };

@@ -3,6 +3,7 @@ import { Platform, StatusBar, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { AssistantScreen } from "../screens/assistant/AssistantScreen";
 import { HomeScreen } from "../screens/home/HomeScreen";
 import { THEME } from "../theme";
 
@@ -32,11 +33,23 @@ const MainNavigator = () => {
   );
 };
 
+const AssistantNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Assistant"
+        component={AssistantScreen}
+        options={navigatorOptions.hide}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export const AppNavigator = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <MainNavigator />
+        <AssistantNavigator />
       </NavigationContainer>
     </SafeAreaProvider>
   );
