@@ -19,8 +19,6 @@ export const Footer = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 166,
-    width: "100%",
-    position: "absolute",
+    height: 96,
   },
 });

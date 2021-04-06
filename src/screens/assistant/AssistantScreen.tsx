@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+
 import { View, Animated, Image } from "react-native";
 
 import { AssistantPages } from "../../components/assistant/Assistant";
@@ -41,8 +41,8 @@ export const AssistantScreen = ({}) => {
       />
       <View
         style={{
-          width: "100%",
           height: "100%",
+          width: "100%",
           position: "absolute",
         }}
       >
@@ -52,7 +52,7 @@ export const AssistantScreen = ({}) => {
           pagesCount={pages.length}
           backAction={backHandler}
         />
-        <View style={{ flex: 1, justifyContent: "flex-end" }}>
+        <View style={{ flex: 1 }}>
           <AssistantPages pages={pages} currentPage={currentPage} />
           <Footer nextAction={nextHandler} />
         </View>

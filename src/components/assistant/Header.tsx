@@ -71,7 +71,7 @@ export const Header = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 145,
+    height: 185,
     width: "100%",
   },
   top: {
@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
     height: 44,
   },
   main: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },

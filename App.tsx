@@ -13,10 +13,9 @@ import {
 } from "react-native";
 import i18next from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
-import homeEn from "./src/i18n/en/home.json";
-import homeRu from "./src/i18n/ru/home.json";
 import { THEME } from "./src/theme";
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import KeyboardManager from "react-native-keyboard-manager";
 
 const { RNI18n } = NativeModules;
 
@@ -24,8 +23,6 @@ const locale =
   Platform.OS === "ios"
     ? NativeModules.SettingsManager.settings.AppleLocale
     : NativeModules.I18nManager.localeIdentifier;
-
-console.log(locale);
 
 i18next.use(initReactI18next).init({
   lng: "en",
@@ -39,6 +36,10 @@ i18next.use(initReactI18next).init({
     en: { translation: require("./src/i18n/en/home.json") },
   },
 });
+
+if (Platform.OS === "ios") {
+  KeyboardManager.setEnable(true);
+}
 
 export default function App() {
   const [isRedy, setIsRedy] = useState(false);
