@@ -6,8 +6,23 @@ import { AssistantPages } from "../../components/assistant/Assistant";
 import { Footer } from "../../components/assistant/Footer";
 import { Header } from "../../components/assistant/Header";
 import { AssistantPageType } from "../../enums";
+import { RootStackParamList } from "navigation-types";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-export const AssistantScreen = ({}) => {
+type AssistantScreenRouteProp = RouteProp<RootStackParamList, "Assistant">;
+
+type AssistantScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Assistant"
+>;
+
+type Props = {
+  router: AssistantScreenRouteProp;
+  navigation: AssistantScreenNavigationProp;
+};
+
+export const AssistantScreen = (props: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const pages: AssistantPageType[] = [
@@ -53,7 +68,11 @@ export const AssistantScreen = ({}) => {
           backAction={backHandler}
         />
         <View style={{ flex: 1 }}>
-          <AssistantPages pages={pages} currentPage={currentPage} />
+          <AssistantPages
+            navigation={props.navigation}
+            pages={pages}
+            currentPage={currentPage}
+          />
           <Footer nextAction={nextHandler} />
         </View>
       </View>

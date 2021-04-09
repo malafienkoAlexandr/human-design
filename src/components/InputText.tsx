@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   input: {
     color: THEME.WHITE_COLOR,
     height: 44,
-    margin: 12,
+    margin: 7,
     borderBottomWidth: 1,
     borderColor: THEME.WHITE_COLOR_60,
     textAlign: "center",

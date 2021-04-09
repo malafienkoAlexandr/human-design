@@ -2,23 +2,23 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View, Text } from "react-native";
 import { InputText } from "../InputText";
+import { PlaceInput } from "./PlaceInput";
 import { Title } from "./Title";
 
-type Props = {};
+type Props = {
+  place: string;
+  onPress: () => void;
+};
 
-export const Name = (props: Props) => {
+export const BirthPlace = (props: Props) => {
   const { t } = useTranslation();
   return (
     <View style={styles.container}>
       <Title
-        title={t("assistant_name_title")}
-        description={t("assistant_name_description")}
+        title={t("assistant_place_birth_title")}
+        description={t("assistant_time_birth_description")}
       />
-      <InputText
-        value={"Иван"}
-        placeholder={t("assistant_name_enter")}
-        onChangeValue={(text) => console.log(text)}
-      />
+      <PlaceInput title={props.place} onPress={props.onPress} />
     </View>
   );
 };

@@ -37,10 +37,6 @@ i18next.use(initReactI18next).init({
   },
 });
 
-if (Platform.OS === "ios") {
-  KeyboardManager.setEnable(true);
-}
-
 export default function App() {
   const [isRedy, setIsRedy] = useState(false);
 
