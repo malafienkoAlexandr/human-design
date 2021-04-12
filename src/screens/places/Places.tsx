@@ -23,10 +23,13 @@ type Props = {
 const searchPlaces = async () => {
   try {
     let result = await Geocoder.geocodeAddress("Моск", {
+      fallbackToGoogle: false,
       locale: "ru",
     });
+    console.log("Success!!!");
     console.log(result);
   } catch (error) {
+    console.log("Error!!!");
     console.log(error);
   }
 };
