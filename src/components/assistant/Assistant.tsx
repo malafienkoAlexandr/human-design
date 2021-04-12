@@ -32,13 +32,19 @@ export const AssistantPages = (props: Props) => {
     return props.pages.map((type) => {
       switch (type) {
         case AssistantPageType.name:
-          return <Name />;
+          return <Name key={"name"} />;
         case AssistantPageType.birthPlace:
-          return <BirthPlace place={""} onPress={openPlacestHandler} />;
+          return (
+            <BirthPlace
+              key={"birthPlace"}
+              place={""}
+              onPress={openPlacestHandler}
+            />
+          );
         case AssistantPageType.birthDate:
-          return <Date />;
+          return <Date key={"date"} />;
         case AssistantPageType.birthTime:
-          return <Time />;
+          return <Time key={"time"} />;
       }
     });
   };

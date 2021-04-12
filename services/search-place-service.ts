@@ -1,13 +1,13 @@
 import Geocoder from "@timwangdev/react-native-geocoder";
 
-export const search = async () => {
+type Props = {
+  place: string;
+};
+
+export const searchPlace = async () => {
   try {
-    let result = await Geocoder.geocodeAddress("Красн", {
+    await Geocoder.geocodeAddress("Моск", {
       locale: "ru",
-      maxResults: 10,
     });
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (error) {}
 };
