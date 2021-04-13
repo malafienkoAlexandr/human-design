@@ -50,7 +50,8 @@
     "prettier": "2.2.1",
     "typescript": "~4.0.0"
   },
-  "name": "human-design",
+  "displayName": "human-deign",
+  "name": "human-deign",
   "version": "1.0.0",
   "private": true,
   "ios": {

@@ -24,6 +24,7 @@ const searchPlaces = async () => {
   try {
     let result = await Geocoder.geocodeAddress("Моск", {
       locale: "ru",
+      fallbackToGoogle: false,
     });
     console.log(result);
   } catch (error) {
