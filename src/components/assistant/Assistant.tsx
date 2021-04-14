@@ -23,11 +23,14 @@ type Props = {
 };
 
 export const AssistantPages = (props: Props) => {
-  const pageRef: Pages = createRef();
-  useEffect(() => {
-    pageRef.current.scrollToPage = props.currentPage;
-    console.log("useeffect!");
-  });
+  // useEffect(() => {
+  //   if (pageRef === null) {
+  //     return;
+  //   } else {
+  //     pageRef.current.scrollToPage = props.currentPage;
+  //   }
+  // });
+  // const pageRef: React.RefObject<Pages> = createRef();
   const openPlacestHandler = () => {
     props.navigation.navigate("Places");
   };
@@ -55,7 +58,7 @@ export const AssistantPages = (props: Props) => {
   console.log(props.currentPage);
   return (
     <View style={styles.container}>
-      <Pages ref={pageRef}>{renderPages()}</Pages>
+      <Pages>{renderPages()}</Pages>
     </View>
   );
 };
