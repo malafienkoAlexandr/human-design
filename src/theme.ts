@@ -6,4 +6,5 @@ export const THEME = {
   WHITE_COLOR: "#FFFFFF",
   WHITE_COLOR_60: "rgba(196, 196, 196, 0.6)",
   GREY_COLOR_80_A: "rgba(36, 39, 44, 0.8)",
+  CLEAR_COLOR: "rgba(255, 255, 255, 0.0)",
 };

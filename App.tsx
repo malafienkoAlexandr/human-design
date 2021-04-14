@@ -19,6 +19,10 @@ import KeyboardManager from "react-native-keyboard-manager";
 
 const { RNI18n } = NativeModules;
 
+if (Platform.OS === "ios") {
+  KeyboardManager.setEnable(true);
+}
+
 const locale =
   Platform.OS === "ios"
     ? NativeModules.SettingsManager.settings.AppleLocale

@@ -11,6 +11,7 @@
   "assistant_place_birth_title": "Место рождения",
   "assistant_place_birth_description": "Место, где ты родился, очень важно для расчета. Так мы сможем определить точное положение планет и звезд, которые оставили свой отпечаток на твоей судьбе.",
   "assistant": {
-    "place_birth_placeholder": "Где ты родился?"
+    "place_birth_placeholder": "Где ты родился?",
+    "search_placeholder": "Место твоего рождения"
   }
 }

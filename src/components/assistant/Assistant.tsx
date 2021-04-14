@@ -1,6 +1,5 @@
-import React from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "navigation-types";
 
@@ -24,6 +23,11 @@ type Props = {
 };
 
 export const AssistantPages = (props: Props) => {
+  const pageRef: Pages = createRef();
+  useEffect(() => {
+    pageRef.current.scrollToPage = props.currentPage;
+    console.log("useeffect!");
+  });
   const openPlacestHandler = () => {
     props.navigation.navigate("Places");
   };
@@ -51,7 +55,7 @@ export const AssistantPages = (props: Props) => {
   console.log(props.currentPage);
   return (
     <View style={styles.container}>
-      <Pages scrollToPage={3}>{renderPages()}</Pages>
+      <Pages ref={pageRef}>{renderPages()}</Pages>
     </View>
   );
 };
