@@ -1,12 +1,14 @@
-import React from "react";
+import React, { createRef, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import {
   GooglePlacesAutocomplete,
+  GooglePlacesAutocompleteRef,
   PlaceType,
 } from "react-native-google-places-autocomplete";
 import { StackNavigationProp } from "@react-navigation/stack";
+import KeyboardManager from "react-native-keyboard-manager";
 import { RootStackParamList } from "navigation-types";
 import { THEME } from "../../theme";
 
@@ -24,7 +26,24 @@ type Props = {
 
 export const SearchPlaces = (props: Props) => {
   const { t } = useTranslation();
-  const types: PlaceType[] = [];
+  const ref = createRef<GooglePlacesAutocompleteRef>();
+
+  const enableKeyboardManager = (value: boolean) => {
+    if (Platform.OS === "ios") {
+      KeyboardManager.setEnable(value);
+    }
+  };
+
+  if (Platform.OS === "ios") {
+    KeyboardManager.setEnable(false);
+  }
+
+  useEffect(() => {
+    enableKeyboardManager(false);
+    ref.current?.focus();
+  }, []);
+
+  const types: PlaceType[] = ["locality"];
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -32,11 +51,14 @@ export const SearchPlaces = (props: Props) => {
       </View>
 
       <GooglePlacesAutocomplete
+        ref={ref}
         placeholder={t("assistant.search_placeholder")}
         enablePoweredByContainer={false}
+        fetchDetails={true}
         filterReverseGeocodingByTypes={types}
         onPress={(data, details = null) => {
-          console.log(data, details);
+          console.log("Details", data, details);
+          props.navigation.goBack();
         }}
         styles={{
           container: {

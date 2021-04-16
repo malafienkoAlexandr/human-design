@@ -1,6 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View, Text } from "react-native";
+import { DateSelector } from "../DateSelector";
+import { newDate } from "./DateHelper";
+import { SimpleButton } from "./SimpleButton";
 import { Title } from "./Title";
 
 type Props = {};
@@ -13,14 +16,20 @@ export const Time = (props: Props) => {
         title={t("assistant_time_birth_title")}
         description={t("assistant_time_birth_description")}
       />
+      <View style={{ flex: 1, justifyContent: "space-around" }}>
+        <DateSelector
+          date={newDate()}
+          mode={"time"}
+          onDateChange={(time) => console.log(time)}
+        />
+        <SimpleButton title={t("know")} onPress={() => console.log("press")} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 86,
     flex: 1,
-    justifyContent: "space-between",
   },
 });

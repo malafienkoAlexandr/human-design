@@ -10,6 +10,7 @@ import { Name } from "./Name";
 import { Time } from "./Time";
 import { Date } from "./Date";
 import { BirthPlace } from "./BirthPlace";
+import { newDate } from "./DateHelper";
 
 type AssistantScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -23,14 +24,15 @@ type Props = {
 };
 
 export const AssistantPages = (props: Props) => {
-  // useEffect(() => {
-  //   if (pageRef === null) {
-  //     return;
-  //   } else {
-  //     pageRef.current.scrollToPage = props.currentPage;
-  //   }
-  // });
-  // const pageRef: React.RefObject<Pages> = createRef();
+  const pageRef = createRef<Pages>();
+
+  useEffect(() => {
+    if (pageRef !== null) {
+      pageRef.current.isDragging(false);
+      pageRef.current.scrollToPage(props.currentPage);
+    }
+  });
+
   const openPlacestHandler = () => {
     props.navigation.navigate("Places");
   };
@@ -49,7 +51,13 @@ export const AssistantPages = (props: Props) => {
             />
           );
         case AssistantPageType.birthDate:
-          return <Date key={"date"} />;
+          return (
+            <Date
+              key={"date"}
+              date={newDate()}
+              onChangeTime={(time) => console.log(time)}
+            />
+          );
         case AssistantPageType.birthTime:
           return <Time key={"time"} />;
       }
@@ -58,7 +66,9 @@ export const AssistantPages = (props: Props) => {
   console.log(props.currentPage);
   return (
     <View style={styles.container}>
-      <Pages>{renderPages()}</Pages>
+      <Pages ref={pageRef} startPage={props.currentPage} scrollEnabled={false}>
+        {renderPages()}
+      </Pages>
     </View>
   );
 };
