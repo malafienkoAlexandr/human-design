@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.human.design.daily'
+        applicationId 'com.malafienko.humandesign'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

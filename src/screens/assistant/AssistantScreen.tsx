@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { View, Animated, Image } from "react-native";
+import { View, Animated, Image, StyleSheet } from "react-native";
 
 import { AssistantPages } from "../../components/assistant/Assistant";
 import { Footer } from "../../components/assistant/Footer";
@@ -45,7 +45,7 @@ export const AssistantScreen = (props: Props) => {
   };
 
   return (
-    <View style={{ width: "100%", height: "100%" }}>
+    <View style={styles.main}>
       <Image
         style={{
           resizeMode: "stretch",
@@ -54,24 +54,18 @@ export const AssistantScreen = (props: Props) => {
         }}
         source={require("../../../assets/assistanceBackground.png")}
       />
-      <View
-        style={{
-          height: "100%",
-          width: "100%",
-          position: "absolute",
-        }}
-      >
+      <View style={styles.cantainer}>
         <Header
           type={pages[currentPage - 1]}
           currentPage={currentPage}
           pagesCount={pages.length}
           backAction={backHandler}
         />
-        <View style={{ flex: 1 }}>
+        <View style={styles.bottom}>
           <AssistantPages
             navigation={props.navigation}
             pages={pages}
-            currentPage={currentPage}
+            currentPage={currentPage - 1}
           />
           <Footer nextAction={nextHandler} />
         </View>
@@ -79,3 +73,18 @@ export const AssistantScreen = (props: Props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  main: {
+    width: "100%",
+    height: "100%",
+  },
+  cantainer: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+  },
+  bottom: {
+    flex: 1,
+  },
+});

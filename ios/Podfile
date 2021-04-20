@@ -21,6 +21,4 @@ target 'humandesign' do
   #  post_install do |installer|
   #    flipper_post_install(installer)
   #  end
-  pod 'react-native-geocoder', :path => '../node_modules/@timwangdev/react-native-geocoder'
-
 end

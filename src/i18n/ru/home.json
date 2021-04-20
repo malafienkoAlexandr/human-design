@@ -1,6 +1,8 @@
 {
   "button_bodygraph": "Твой бодиграф",
   "next": "Продолжить",
+  "know": "Знаю точно!",
+  "not_know": "Знаю примерно",
   "assistant_name_title": "Как вас зовут?",
   "assistant_name_description": "Я должен знать, как к тебе обращаться, так мне будет проще составить твой личный гороскоп и нумерологический отчет.",
   "assistant_name_enter": "Введите имя",
@@ -11,6 +13,7 @@
   "assistant_place_birth_title": "Место рождения",
   "assistant_place_birth_description": "Место, где ты родился, очень важно для расчета. Так мы сможем определить точное положение планет и звезд, которые оставили свой отпечаток на твоей судьбе.",
   "assistant": {
-    "place_birth_placeholder": "Где ты родился?"
+    "place_birth_placeholder": "Где ты родился?",
+    "search_placeholder": "Место твоего рождения"
   }
 }

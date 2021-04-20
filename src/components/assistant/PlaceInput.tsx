@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 44,
   },
   text: {
-    padding: 16,
+    paddingBottom: 16,
     color: THEME.WHITE_COLOR_60,
     fontSize: 15,
     textAlign: "center",
