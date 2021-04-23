@@ -1,4 +1,4 @@
-declare module 'UserInfoModule' {
+declare module "UserInfoModule" {
   export type UserInfo = {
     profile: string;
     type: string;
@@ -8,10 +8,11 @@ declare module 'UserInfoModule' {
     designGates: number[];
     superActiveNumbers: number[];
     channel: string[];
-  }
+  };
 }
 
-declare module 'UserModule' {
+declare module "UserModule" {
+  import { Column, Primary } from "sqlite-ts";
   export type User = {
     id: string;
     name: string;
@@ -21,5 +22,5 @@ declare module 'UserModule' {
     city: string;
     country: string;
     info?: UserInfo;
-  }
+  };
 }
