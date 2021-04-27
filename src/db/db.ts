@@ -1,70 +1,40 @@
 import { User } from "UserModule";
-import { Column, Db, Primary, SQLite3Driver } from "sqlite-ts";
-import Sqlite3 = require("sqlite3");
+import { Db, SQLite3Driver } from "sqlite-ts";
+import { DBUser, DBInfo } from "./Entities";
 
 const sqlite3 = require("sqlite3").verbose();
 
 const sqlStorage = new sqlite3.Database("storage");
 
-const DB = async () => {
+var db: Db<{
+  DBUser: typeof DBUser;
+  DBInfo: typeof DBInfo;
+}>;
+
+export const initDb = async () => {
   return await Db.init({
     driver: new SQLite3Driver(sqlStorage),
     entities: { DBUser, DBInfo },
-    createTables: false,
+    createTables: true,
+  }).then((_db) => {
+    db = _db;
   });
 };
 
-export class DBUser {
-  @Primary()
-  id: string = "";
+export const saveUser = async (user: User) => {
+  const result = await db.tables.DBUser.insert({
+    id: user.id,
+    name: user.name,
+    birthDate: user.birthDate,
+    birthTime: user.birthTime,
+    utc: user.utc,
+    city: user.city,
+    country: user.country,
+  });
+};
 
-  @Column("NVARCHAR")
-  name: string = "";
-
-  @Column("NVARCHAR")
-  birthDate: string = "";
-
-  @Column("NVARCHAR")
-  birthTime: string = "";
-
-  @Column("INTEGER")
-  utc: number = 0;
-
-  @Column("NVARCHAR")
-  city: string = "";
-
-  @Column("NVARCHAR")
-  country: string = "";
-}
-
-export class DBInfo {
-  @Primary()
-  id: string = "";
-
-  @Primary()
-  userId: string = "";
-
-  @Column("NVARCHAR")
-  type: string = "";
-
-  @Column("NVARCHAR")
-  authority: string = "";
-
-  @Column("DECIMAL")
-  definition: number = 0;
-
-  @Column("NVARCHAR")
-  personalGates: string = "";
-
-  @Column("NVARCHAR")
-  designGates: string = "";
-
-  @Column("NVARCHAR")
-  superActiveNumbers: string = "";
-
-  @Column("NVARCHAR")
-  channels: string = "";
-
-  @Column("NVARCHAR")
-  profile: string = "";
-}
+export const getUser = async (id: string) => {
+  return await db.tables.DBUser.single((c) => [c.id]).where((c) =>
+    c.equals({ id: { id } })
+  );
+};

@@ -1,21 +1,16 @@
 import { User } from "UserModule";
 import { combineReducers } from "redux";
 import { createReducer } from "typesafe-actions";
-import cuid from "cuid";
-import { createUser } from "./actions";
 
-export const user = createReducer({
-  id: cuid(),
-  name: "",
-  birthDate: "",
-  birthTime: "",
-  utc: 0,
-  city: "",
-  country: "",
-} as User);
+import { getUserAssync } from "./actions";
+
+export const getUser = createReducer({} as User).handleAction(
+  getUserAssync.success,
+  (state, action) => action.payload
+);
 
 const userReducer = combineReducers({
-  user,
+  getUser,
 });
 
 export default userReducer;
