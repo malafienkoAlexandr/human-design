@@ -1,3 +1,4 @@
+import { BirthPlace } from "./../components/assistant/BirthPlace";
 import { User } from "UserModule";
 import { Db, SQLite3Driver } from "sqlite-ts";
 import { DBUser, DBInfo } from "./Entities";
@@ -28,8 +29,7 @@ export const saveUser = async (user: User) => {
     birthDate: user.birthDate,
     birthTime: user.birthTime,
     utc: user.utc,
-    city: user.city,
-    country: user.country,
+    birthPlace: user.birthPlce,
   });
 };
 

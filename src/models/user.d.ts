@@ -19,8 +19,7 @@ declare module "UserModule" {
     birthDate: string;
     birthTime: string;
     utc: number;
-    city: string;
-    country: string;
+    birthPlce: string;
     info?: UserInfo;
   };
 }

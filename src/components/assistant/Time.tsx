@@ -6,7 +6,9 @@ import { newDate } from "./DateHelper";
 import { SimpleButton } from "./SimpleButton";
 import { Title } from "./Title";
 
-type Props = {};
+type Props = {
+  time: Date;
+};
 
 export const Time = (props: Props) => {
   const { t } = useTranslation();
@@ -18,7 +20,7 @@ export const Time = (props: Props) => {
       />
       <View style={{ flex: 1, justifyContent: "space-around" }}>
         <DateSelector
-          date={newDate()}
+          date={props.time}
           mode={"time"}
           onDateChange={(time) => console.log(time)}
         />

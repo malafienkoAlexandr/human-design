@@ -17,10 +17,7 @@ export class DBUser {
   utc: number = 0;
 
   @Column("NVARCHAR")
-  city: string = "";
-
-  @Column("NVARCHAR")
-  country: string = "";
+  birthPlace: string = "";
 }
 
 export class DBInfo {

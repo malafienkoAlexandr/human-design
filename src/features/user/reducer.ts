@@ -4,13 +4,13 @@ import { createReducer } from "typesafe-actions";
 
 import { getUserAssync } from "./actions";
 
-export const getUser = createReducer({} as User).handleAction(
+export const user = createReducer({} as User).handleAction(
   getUserAssync.success,
   (state, action) => action.payload
 );
 
 const userReducer = combineReducers({
-  getUser,
+  user,
 });
 
 export default userReducer;

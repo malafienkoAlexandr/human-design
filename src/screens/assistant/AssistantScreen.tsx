@@ -9,6 +9,10 @@ import { AssistantPageType } from "../../enums";
 import { RootStackParamList } from "navigation-types";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { getUserAssync } from "../../features/user/actions";
+import { connect } from "react-redux";
+import { RootState } from "typesafe-actions";
+import * as selectors from "../../features/user/selectors";
 
 type AssistantScreenRouteProp = RouteProp<RootStackParamList, "Assistant">;
 
@@ -22,7 +26,15 @@ type Props = {
   navigation: AssistantScreenNavigationProp;
 };
 
-export const AssistantScreen = (props: Props) => {
+const mapStateToProps = (state: RootState) => ({
+  todos: selectors.getUser(state.user),
+});
+
+const dispatchProps = {
+  getUser: getUserAssync,
+};
+
+const AssistantScreen = (props: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const pages: AssistantPageType[] = [
@@ -63,6 +75,7 @@ export const AssistantScreen = (props: Props) => {
         />
         <View style={styles.bottom}>
           <AssistantPages
+            user={undefined}
             navigation={props.navigation}
             pages={pages}
             currentPage={currentPage - 1}
@@ -88,3 +101,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default connect(mapStateToProps, dispatchProps)(AssistantScreen);

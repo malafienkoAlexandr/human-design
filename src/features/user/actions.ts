@@ -7,4 +7,4 @@ export const getUserAssync = createAsyncAction(
   "DB/GET_USER_REQUEST",
   "DB/GET_USER_SUCCESS",
   "DB/GET_USER_FAILURE"
-)<undefined, User>();
+)<undefined, User, string>();

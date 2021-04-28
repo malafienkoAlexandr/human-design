@@ -11,6 +11,7 @@ import { Time } from "./Time";
 import { Date } from "./Date";
 import { BirthPlace } from "./BirthPlace";
 import { newDate } from "./DateHelper";
+import { User } from "UserModule";
 
 type AssistantScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -18,6 +19,7 @@ type AssistantScreenNavigationProp = StackNavigationProp<
 >;
 
 type Props = {
+  user?: User;
   currentPage: number;
   pages: AssistantPageType[];
   navigation: AssistantScreenNavigationProp;
@@ -41,12 +43,12 @@ export const AssistantPages = (props: Props) => {
     return props.pages.map((type) => {
       switch (type) {
         case AssistantPageType.name:
-          return <Name key={"name"} />;
+          return <Name name={props.user?.name ?? ""} key={"name"} />;
         case AssistantPageType.birthPlace:
           return (
             <BirthPlace
               key={"birthPlace"}
-              place={""}
+              place={props.user?.birthPlce ?? ""}
               onPress={openPlacestHandler}
             />
           );
@@ -54,12 +56,12 @@ export const AssistantPages = (props: Props) => {
           return (
             <Date
               key={"date"}
-              date={newDate()}
+              date={newDate(props.user?.birthDate)}
               onChangeTime={(time) => console.log(time)}
             />
           );
         case AssistantPageType.birthTime:
-          return <Time key={"time"} />;
+          return <Time time={newDate(props.user?.birthTime)} key={"time"} />;
       }
     });
   };

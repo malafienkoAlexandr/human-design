@@ -4,7 +4,9 @@ import { StyleSheet, View, Text } from "react-native";
 import { InputText } from "../InputText";
 import { Title } from "./Title";
 
-type Props = {};
+type Props = {
+  name: string;
+};
 
 export const Name = (props: Props) => {
   const { t } = useTranslation();
@@ -15,7 +17,7 @@ export const Name = (props: Props) => {
         description={t("assistant_name_description")}
       />
       <InputText
-        value={"Иван"}
+        value={props.name}
         placeholder={t("assistant_name_enter")}
         onChangeValue={(text) => console.log(text)}
       />
