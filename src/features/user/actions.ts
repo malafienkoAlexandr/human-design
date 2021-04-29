@@ -1,5 +1,5 @@
 import { createAction, createAsyncAction } from "typesafe-actions";
-import { getUser } from "./../../db/db";
+
 import { User } from "UserModule";
 import { userRootId } from "./../../constants";
 
