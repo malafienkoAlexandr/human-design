@@ -21,7 +21,7 @@ type AssistantScreenNavigationProp = StackNavigationProp<
   "Assistant"
 >;
 
-type Props = {
+type NavigationProps = {
   router: AssistantScreenRouteProp;
   navigation: AssistantScreenNavigationProp;
 };
@@ -34,7 +34,11 @@ const dispatchProps = {
   getUser: getUserAssync,
 };
 
-const AssistantScreen = (props: Props) => {
+type Props = ReturnType<typeof mapStateToProps> &
+  typeof dispatchProps &
+  NavigationProps;
+
+function AssistantScreen(props: Props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const pages: AssistantPageType[] = [
@@ -85,7 +89,7 @@ const AssistantScreen = (props: Props) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   main: {

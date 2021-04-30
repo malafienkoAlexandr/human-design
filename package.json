@@ -47,7 +47,6 @@
     "redux": "^4.0.5",
     "redux-observable": "^1.2.0",
     "rxjs": "^6.6.6",
-    "sqlite-ts": "^0.1.0",
     "typesafe-actions": "^5.1.0"
   },
   "devDependencies": {

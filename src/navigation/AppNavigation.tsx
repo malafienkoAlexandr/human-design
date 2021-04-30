@@ -6,7 +6,7 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from "@react-navigation/stack";
-import { AssistantScreen } from "../screens/assistant/AssistantScreen";
+import AssistantScreen from "../screens/assistant/AssistantScreen";
 import { HomeScreen } from "../screens/home/HomeScreen";
 import { THEME } from "../theme";
 import { SearchPlaces } from "../screens/places/Places";

@@ -1,46 +1,59 @@
-import { BirthPlace } from "./../components/assistant/BirthPlace";
-import { User } from "UserModule";
-import { Db, SQLite3Driver } from "sqlite-ts";
-import { DBUser, DBInfo } from "./Entities";
+import { userRootId } from "./../constants";
+import { User, Info } from "./Schemas";
 import Realm from "realm";
 
-const realm = await Realm.open({
-  path: "myrealm",
-  schema: [],
-});
+const realm = new Realm({ schema: [User, Info], schemaVersion: 1 });
 
-// const sqlite3 = require("sqlite3").verbose();
+export const saveUser = (
+  id: string,
+  name: string,
+  birthDate: string,
+  birthTime: string,
+  utc: number,
+  birthPlace: string
+) => {
+  realm.write(() => {
+    realm.create("User", {
+      id: id,
+      name: name,
+      birthDate: birthDate,
+      birthTime: birthTime,
+      birthPlace: birthPlace,
+      utc: utc,
+    });
+  });
+};
 
-// const sqlStorage = new sqlite3.Database("storage");
+export const getUser = (id: string) => {
+  const users = realm.objects<User>(User.schema.name);
+  let user = users.filtered("id = ", id)[0] as User;
+  return user;
+};
 
-// var db: Db<{
-//   DBUser: typeof DBUser;
-//   DBInfo: typeof DBInfo;
-// }>;
+export const deleteUser = (id: string) => {
+  realm.write(() => {
+    realm.delete(getUser((id = id)));
+  });
+};
 
-// export const initDb = async () => {
-//   return await Db.init({
-//     driver: new SQLite3Driver(sqlStorage),
-//     entities: { DBUser, DBInfo },
-//     createTables: true,
-//   }).then((_db) => {
-//     db = _db;
-//   });
-// };
+export const updateUser = (
+  id: string,
+  name: string,
+  birthDate: string,
+  birthTime: string,
+  utc: number,
+  birthPlace: string
+) => {
+  realm.write(() => {
+    let user = getUser((id = id));
+    (user.name = name),
+      (user.birthDate = birthDate),
+      (user.birthTime = birthTime),
+      (user.utc = utc),
+      (user.birthPlace = birthPlace);
+  });
+};
 
-// export const saveUser = async (user: User) => {
-//   const result = await db.tables.DBUser.insert({
-//     id: user.id,
-//     name: user.name,
-//     birthDate: user.birthDate,
-//     birthTime: user.birthTime,
-//     utc: user.utc,
-//     birthPlace: user.birthPlce,
-//   });
-// };
-
-// export const getUser = async (id: string) => {
-//   return await db.tables.DBUser.single((c) => [c.id]).where((c) =>
-//     c.equals({ id: { id } })
-//   );
-// };
+export const getFriends = () => {
+  return realm.objects<User>(User.schema.name).filtered("id !== ", userRootId);
+};
